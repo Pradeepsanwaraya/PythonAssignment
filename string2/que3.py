@@ -1,5 +1,14 @@
-msg = input("Enter complaint: ")
 
-words = msg.split()
+# 3.
+# Word Counter in Complaint Message
 
-print("Total words:", len(words))
+# A customer care system wants to count how many words are present in a complaint message.
+
+# Input:
+# Enter complaint: Delivery was delayed again today
+
+# Output:
+# Total words: 5
+msg = input("Enter complaint: ").split()
+
+print("Total words:", len(msg))

@@ -1,10 +1,19 @@
-review = input("Enter product review: ")
-char = input("Enter character to check: ")
+'''3.
+Character Occurrence Checker in Product Review
 
-count = 0
+An e-commerce website wants to know how many times a particular character appears in a product review.
 
-for ch in review:
-    if ch.lower() == char.lower():
-        count += 1
+Input: Enter product review: this product is really good Enter character to check: o
 
-print("Character", repr(char), "occurs:", count, "times")
+Output: Character 'o' occurs: 4 times
+'''
+
+msg=input("Enter product review: ")
+ch=input("Enter Character  ")
+count=0
+for i in msg:
+    if i.lower()==ch:
+        count=count+1
+
+print("Occurance of ",ch ,"in ",msg,"is : ",count)
+        

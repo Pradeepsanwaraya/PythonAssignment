@@ -1,9 +1,24 @@
-name = input("Enter student name: ")
-count = 0
+'''4.
+Consonant Counter in Student Name Record
 
-for ch in name:
-    if ch.isalpha():
-        if ch.lower() not in "aeiou":
-            count += 1
+A school management system wants to count how many consonants are present in student names.
 
-print("Total consonants:", count)
+Input: Enter student name: Ajay Singh Thakur
+
+Output: Total consonants: 11
+
+NOTE:
+
+Ignore case sensitivity (treat A and a same)
+Consider only English alphabets for vowel/consonant counting
+Vowels: A, E, I, O, U
+'''
+
+msg=input("Enter Student Name : ")
+count=0
+for i in msg:
+    if i=="aeiou":
+        pass
+    else:
+        count=count+1
+print(count)

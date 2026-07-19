@@ -1,20 +1,31 @@
-password = input("Enter password: ")
+pw = input("Enter Password: ")
 
-digit = 0
-special = 0
+count = 0
+scount = 0
 
-for ch in password:
-    if ch.isdigit():
-        digit += 1
-    if ch in "@#$%&*":
-        special += 1
+if len(pw) >= 8 and len(pw) <= 15:
 
-if (8 <= len(password) <= 15 and
-    password[0].isupper() and
-    password[-1].isdigit() and
-    digit >= 2 and
-    special >= 1 and
-    " " not in password):
-    print("Secure Password")
+    if pw[0] >= 'A' and pw[0] <= 'Z':
+        if pw[-1] >= '0' and pw[-1] <= '9':
+
+            for ch in pw:
+                if ch >= '0' and ch <= '9':
+                    count = count + 1
+                elif ch == "@" or ch == "#" or ch == "$" or ch == "%" or ch == "&" or ch == "*":
+                    scount = scount + 1
+                elif ch == " ":
+                    print("Invalid Password")
+                    break
+            else:
+                if count >= 2 and scount >= 1:
+                    print("Secure Password")
+                else:
+                    print("Invalid Password")
+
+        else:
+            print("Invalid Password")
+    else:
+        print("Invalid Password")
+
 else:
     print("Invalid Password")

@@ -20,8 +20,8 @@
 # ```
 
 # Output:
-s=input("Enter Sentence: ").split()
-word=input("Enter Word: ")
+s=input("enter any string ").split()
+word=input("enter word ")
 count=0
 for i in s:
     if i==word:

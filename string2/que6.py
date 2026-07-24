@@ -16,11 +16,11 @@
 # Output:
 # Both Product Codes are Matching
 
-code1 = input("Enter first product code: ")
-code2 = input("Enter second product code: ")
+code1=input("Enter first product code: ")
+code2=input("Enter second product code: ")
 for ch in code1:
     if ch not in code2:
-        print("Both Product Codes are Not Matching")
+        print("product are not matching")
         break
 else:
     

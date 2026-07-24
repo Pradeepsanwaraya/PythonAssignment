@@ -20,10 +20,10 @@
 # 5
 # ```
 s=input("Enter String: ")
-unique=""
+u=""
 count=0
-for i in s:
-    if i not in unique:
-        unique=unique+i
+for i in s:  
+    if i not in u:
+        u=u+i
         count=count+1
-print(count)
+print(count,u)

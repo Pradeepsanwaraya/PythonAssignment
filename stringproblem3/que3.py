@@ -11,10 +11,8 @@
 # Output: Cleaned Message: Java is easy
 msg = input("Enter message: ").split()
 
-clean = ""
-
+space=""
 for i in msg:
-    clean = clean + i + " "
-
-print("Cleaned Message:", clean)
+    space=space+i+" "
+print("Cleaned Message",space)
         

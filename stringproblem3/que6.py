@@ -40,11 +40,11 @@ digit=""
 
 for i in code:
     if i>='A' and i<='Z':
-        alpha = alpha + chr(ord(i) + 32)   # Uppercase → lowercase
+        alpha=alpha+chr(ord(i)+32)   
     elif i>='a' and i<='z':
-        alpha = alpha + i
+        alpha=alpha+i
     elif i>='0' and i<='9':
-        digit=digit + i
+        digit=digit+i
 
 print(alpha)
 print(digit)

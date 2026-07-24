@@ -10,9 +10,9 @@
 # Input: Enter website: www.amazon.com
 
 # Output: Valid Website
-website = input("Enter website: ")
+website=input("Enter website: ")
 
-if website[:3] == "www" and website[-4:] == ".com":
+if website[:3]=="www" and website[-4:]==".com":
     print("Valid Website")
 else:
     print("Invalid Website")

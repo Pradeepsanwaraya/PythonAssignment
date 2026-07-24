@@ -28,7 +28,7 @@
 # Spaces should be ignored.
 # If no second highest frequency exists, print:
 # Second highest repeating character not found
-s=input("Enter String: ")
+s=input("Enter any string ")
 first=0
 second=0
 fchar=""

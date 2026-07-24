@@ -1,18 +1,18 @@
 text = input("Enter citizen information: ")
 
 result = ""
-new_word = True
+newword = True
 
 for ch in text:
     if ch == " ":
-        result += ch
-        new_word = True
+        result=result+ch
+        newword = True
     else:
-        if new_word:
-            result += ch.upper()
-            new_word = False
+        if newword:
+            result=result+ch.upper()
+            newword = False
         else:
-            result += ch
+            result=result+ch
 
-print("Formatted Information:")
+print("formatted information:")
 print(result)

@@ -25,15 +25,16 @@
 
 # ---
 word=input("Enter transaction ID:")
-
-for i in range(len(word)):
-    if word[i].isdigit():
-        c=0
+uniqe='' 
+count=0
+done=''
+for i in word:
+    if i not in done:
+        count=0
         for j in word:
-            if word[i]==j:
-                c=c+1
-        if c==1:
-            print(word[i])
-            break
-else:
-    print("No unique digit found")
+            if j==i:
+                count=1
+                break
+        if count==1:
+            print(i)
+            done=done+i

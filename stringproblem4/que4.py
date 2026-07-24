@@ -22,9 +22,10 @@
 # ```
 # is
 # ```
-s=input("Enter Sentence: ").split()
+s=input("Enter Sentence").split()
 small=s[0]
 for i in s:
+
     if len(i)<len(small):
         small=i
-print("Shortest Word:",small)
+print("Shortest word",small)

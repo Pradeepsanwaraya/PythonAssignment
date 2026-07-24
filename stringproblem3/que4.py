@@ -7,8 +7,9 @@
 
 # Output: Encrypted Message: avaj si lufrewop
 msg=input("enter any number").split()
-rev=msg
-for i in range(len(rev)):
-    rev[i]=rev[i][::-1]
+for i in msg:
+    rev=''
+    for j in i:
+        rev=j+rev
 
-print(" ".join(rev))
+    print(rev, end=' ')

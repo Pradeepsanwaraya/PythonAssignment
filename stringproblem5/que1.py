@@ -20,17 +20,12 @@
 
 # ---
 word=input("Enter string:")
-
+done=''
 res=""
+for i in word:
+    if i not in done:
+        res=res+i
+    done=done+i
 
-for i in range(len(word)):
-    for j in range(i+1,len(word)):
-        k=0
-        temp=""
-        while j+k<len(word) and word[i+k]==word[j+k]:
-            temp=temp+word[i+k]
-            k=k+1
-        if len(temp)>len(res):
-            res=temp
 
 print(res)

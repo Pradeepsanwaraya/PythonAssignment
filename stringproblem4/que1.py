@@ -24,13 +24,14 @@
 s=input("Enter String: ")
 new=""
 for i in s:
-    if i>='A' and i<='Z':
+    if i>='a' and i<='z':
         new=new+i
-    elif i>='a' and i<='z':
+    elif i>='A' and i<='z':
         new=new+i
-    elif i>='0' and i<='9':
+    elif i>='0'and i<='9':
         new=new+i
-    elif i==" ":
+    elif i==' ':
         new=new+i
-s=new
-print(s)
+    else:
+        new=new+''
+print(new)

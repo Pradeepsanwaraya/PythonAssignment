@@ -16,12 +16,15 @@
 # Output:
 
 # ```
-s=input("Enter String: ")
-for i in s:
-    count=0
-    for j in s:
-        if i==j:
-            count=count+1
-    if count==1:
-        print("First Non-Repeated Character:",i)
-        break
+string=input("enter any string ")
+done=''
+for i in string:
+    if i not in done:
+        count=0
+        for j in string:
+            if j==i:
+                count=count+1
+        if count==1:
+            print(i)
+            break 
+        done=done+i

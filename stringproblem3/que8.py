@@ -1,128 +1,192 @@
-# QNo 8:--
-# SMART TEXT PROCESSING SYSTEM
+'''
 
-# A software company is developing a Smart Text Processing System for
-# handling user messages. Different users require different text
-# transformations. To avoid creating separate applications, the company
-# wants a menu-driven program where users can select operations according
-# to their requirements.
+QNo 8:--
+SMART TEXT PROCESSING SYSTEM
 
-# The system should continue executing until the user selects Exit.
+A software company is developing a Smart Text Processing System for
+handling user messages. Different users require different text
+transformations. To avoid creating separate applications, the company
+wants a menu-driven program where users can select operations according
+to their requirements.
 
-# ====================================================== MENU
-# ======================================================
+The system should continue executing until the user selects Exit.
 
-# ===== Smart Text Processing System =====
+====================================================== MENU
+======================================================
 
-# 1.  Reverse Complete String
-# 2.  Reverse Every Word
-# 3.  Reverse Word Order
-# 4.  Exit
+===== Smart Text Processing System =====
 
-# ====================================================== Choice 1 :
+1.  Reverse Complete String
+2.  Reverse Every Word
+3.  Reverse Word Order
+4.  Exit
 
-# Conditions: - Reverse the complete string - Ignore extra spaces - Keep
-# special characters (@,#,$,%) in their original positions - Do not use
-# built-in reverse functions
+====================================================== Choice 1 :
 
-# Example: Input: ja@va#py
+Conditions: - Reverse the complete string - Ignore extra spaces - Keep
+special characters (@,#,$,%) in their original positions - Do not use
+built-in reverse functions
 
-# Output: yp@av#aj
+Example: Input: ja@va#py
 
-# Test Case 1: ab@cd#ef Output: fe@dc#ba
+Output: yp@av#aj
 
-# Test Case 2: py@th#on Output: no@ht#yp
+Test Case 1: ab@cd#ef Output: fe@dc#ba
 
-# Test Case 3: java@proOutput : orpa@vaj
+Test Case 2: py@th#on Output: no@ht#yp
 
-# ====================================================== Choice 2 :
+Test Case 3: java@proOutput : orpa@vaj
 
-# Conditions: - Reverse every word separately - Words containing digits
-# should not be reversed - Ignore extra spaces between words - First
-# letter of each reversed word should become uppercase
+====================================================== Choice 2 :
 
-# Example: Input: java is easy123 programming
+Conditions: - Reverse every word separately - Words containing digits
+should not be reversed - Ignore extra spaces between words - First
+letter of each reversed word should become uppercase
 
-# Output: Avaj Si easy123 Gnimmargorp
+Example: Input: java is easy123 programming
 
-# Test Case 1: python full stack22 developer Output: Nohtyp Lluf stack22
-# Repoleved
+Output: Avaj Si easy123 Gnimmargorp
 
-# Test Case 2: hello java99 world Output: Olleh java99 Dlrow
+Test Case 1: python full stack22 developer Output: Nohtyp Lluf stack22
+Repoleved
 
-# ====================================================== Choice 3 :
+Test Case 2: hello java99 world Output: Olleh java99 Dlrow
 
-# Conditions: - Reverse order of words - Remove duplicate words - Ignore
-# case while checking duplicates - Keep only first occurrence
+====================================================== Choice 3 :
 
-# Example: Input: Java python Java react Python
+Conditions: - Reverse order of words - Remove duplicate words - Ignore
+case while checking duplicates - Keep only first occurrence
 
-# Output: React Python Java
+Example: Input: Java python Java react Python
 
-# Test Case 1: HTML CSS HTML Java CSS Output: Java CSS HTML
+Output: React Python Java
 
-# Test Case 2: Python React Java Python React Output: Java React Python
+Test Case 1: HTML CSS HTML Java CSS Output: Java CSS HTML
 
-# ====================================================== Choice 4
-# ======================================================
+Test Case 2: Python React Java Python React Output: Java React Python
 
-# Program Closed Successfully
+====================================================== Choice 4
+======================================================
+
+Program Closed Successfully
+
+'''
+
 while True:
-    print("\n===== Smart Text Processing System =====")
+    print("\n" + "=" * 20, "MENU", "=" * 20)
+    print("===== Smart Text Processing System =====")
     print("1. Reverse Complete String")
     print("2. Reverse Every Word")
     print("3. Reverse Word Order")
     print("4. Exit")
-    ch=int(input("Enter Choice: "))
-    if ch==1:
-        msg=input("Enter String: ").strip()
-        letters=""
-        for i in msg:
-            if i not in "@#$% ":
-                letters=letters+i
-        rev=""
-        for i in range(len(letters)-1,-1,-1):
-            rev=rev+letters[i]
-        ans=""
-        j=0
-        for i in msg:
-            if i in "@#$%":
-                ans=ans+i
-            elif i==" ":
-                continue
-            else:
-                ans=ans+rev[j]
-                j=j+1
-        print(ans)
-    elif ch==2:
-        msg=input("Enter String: ").split()
-        for i in range(len(msg)):
-            digit=False
-            for j in msg[i]:
-                if j>='0' and j<='9':
-                    digit=True
-            if digit==False:
-                word=msg[i][::-1]
-                word=word[0].upper()+word[1:]
-                msg[i]=word
-        for i in msg:
-            print(i,end=" ")
-        print()
-    elif ch==3:
-        msg=input("Enter String: ").split()
-        unique=[]
-        for i in msg:
-            found=False
-            for j in unique:
-                if i.lower()==j.lower():
-                    found=True
-            if found==False:
-                unique.append(i)
-        for i in range(len(unique)-1,-1,-1):
-            print(unique[i].capitalize(),end=" ")
-        print()
-    elif ch==4:
-        print("Program Closed Successfully")
-        break
-    else:
-        print("Invalid Choice")
+
+    choice = int(input("Enter Your Choice: "))
+
+    match choice:
+
+        # ========================= CHOICE 1 =========================
+        case 1:
+            print("\n" + "=" * 20, "Choice 1", "=" * 20)
+
+            st = input("Enter String: ")
+
+            letters = ""
+            special = {}
+            pos = 0
+
+            # Separate letters and special characters
+            for ch in st:
+                if ch.isalpha():
+                    letters += ch
+                else:
+                    special[pos] = ch
+                pos += 1
+
+            # Reverse letters manually
+            rev = ""
+            i = len(letters) - 1
+            while i >= 0:
+                rev += letters[i]
+                i -= 1
+
+            # Build final answer
+            ans = ""
+            j = 0
+
+            for i in range(len(st)):
+                if i in special:
+                    ans += special[i]
+                else:
+                    ans += rev[j]
+                    j += 1
+
+            print("Output:", ans)
+
+        # ========================= CHOICE 2 =========================
+        case 2:
+            print("\n" + "=" * 20, "Choice 2", "=" * 20)
+
+            st = " ".join(input("Enter String: ").split())
+
+            words = st.split()
+            ans = ""
+
+            for word in words:
+
+                digit = False
+                for ch in word:
+                    if ch.isdigit():
+                        digit = True
+                        break
+
+                if digit:
+                    ans += word + " "
+                else:
+                    rev = ""
+                    i = len(word) - 1
+                    while i >= 0:
+                        rev += word[i]
+                        i -= 1
+
+                    rev = rev[0].upper() + rev[1:].lower()
+                    ans += rev + " "
+
+            print("Output:", ans.strip())
+
+        # ========================= CHOICE 3 =========================
+        case 3:
+            print("\n" + "=" * 20, "Choice 3", "=" * 20)
+
+            st = " ".join(input("Enter String: ").split())
+
+            words = st.split()
+
+            unique = []
+
+            for word in words:
+                found = False
+                for x in unique:
+                    if x.lower() == word.lower():
+                        found = True
+                        break
+
+                if not found:
+                    unique.append(word)
+
+            ans = ""
+
+            i = len(unique) - 1
+            while i >= 0:
+                ans += unique[i] + " "
+                i -= 1
+
+            print("Output:", ans.strip())
+
+        # ========================= EXIT =========================
+        case 4:
+            print("\nProgram Closed Successfully")
+            break
+
+        # ========================= INVALID =========================
+        case _:
+            print("Invalid Choice!")

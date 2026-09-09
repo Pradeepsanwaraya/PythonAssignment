@@ -5,10 +5,9 @@ for i in range(1,len(s)):
     for j in range(i):
         sub=sub+s[j]
     end=""
-    for k in range(len(s)-len(sub),len(s)):
+    for k in range(len(sub)-len(s),len(s)):
         end=end+s[k]
-    if sub==end:
-        if len(sub)>len(long):
-            long=sub
+    if len(end)>len(long):
+        long=sub
 print(long)
     

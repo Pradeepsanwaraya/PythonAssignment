@@ -1,0 +1,9 @@
+rich
+opencv-python
+pygame
+pillow
+pynput
+language-tool-python
+reportlab
+customtkinter
+pyttsx3

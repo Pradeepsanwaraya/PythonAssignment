@@ -15,4 +15,4 @@ elif tax<=500000:
 elif tax<=100000:
 	print("20% tax",tax*20/100)
 else:
-	print("30% tax",tax*30/100)
+	print("30% tax",tax*30/100)#the earth is in danger

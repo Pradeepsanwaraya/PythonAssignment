@@ -1,0 +1,3 @@
+12,lavish,present
+13,raj,absent
+45,veer,present

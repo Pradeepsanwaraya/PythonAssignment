@@ -1,3 +1,4 @@
+
 import mysql.connector
 mydb=mysql.connector.connect(
     host='localhost',
@@ -5,55 +6,87 @@ mydb=mysql.connector.connect(
     password='pradeep@1670'
 )
 dbcursor=mydb.cursor()
-# dbcursor.execute('create database schoolmanagement')
-# print("database is created")
 dbcursor.execute("use schoolmanagement")
-# dbcursor.execute("create table student(sid int ,sname varchar(50),course varchar(50),fees decimal(10,2),city varchar(30))")
-# # print("table is created")
-# dbcursor.execute('alter table student add primary key(sid)')
-# dbcursor.execute("DELETE FROM student")
 
-# mydb.commit()
+while True:
+    print("\n===== STUDENT MANAGEMENT SYSTEM =====")
+    print("1. Add Student")
+    print("2. Display All Students")
+    print("3. Search Student by Name")
+    print("4. Update Student Fees")
+    print("5. Delete Student")
+    print("6. Exit")
 
-# print("Old records deleted successfully")
-# dbdata="insert into student values(%s,%s,%s,%s,%s)"
+    choice=int(input("Enter your choice:"))
 
-# dblist = [
-#     (101, 'Amit', 'Python', 15000, 'Indore'),
-#     (102, 'Priya', 'Java', 18000, 'Bhopal'),
-#     (103, 'Rahul', 'Python', 15000, 'Indore'),
-#     (104, 'Neha', 'Java', 18000, 'Ujjain'),
-#     (105, 'Karan', 'MERN', 20000, 'Indore')
-# ]
-# dbcursor.executemany(dbdata,dblist)
-# mydb.commit()
-# dbcursor.execute("select * from student")
-# for i in  dbcursor:
-#     print(i)
+    match choice:
+        case 1:
+            sid=int(input("Enter Student ID:"))
+            sname=input("Enter Student Name:")
+            course=input("Enter Course:")
+            fees=float(input("Enter Fees:"))
+            city=input("Enter City:")
 
-# dbcursor.execute("insert into student values(6,'anjali','python',15000,'dewas')")
-# mydb.commit()
-# dbcursor.execute("select * from student")
-# result=dbcursor.fetchall()
-# print(result)
-# search_name=input("Enter student name:")
-# pattern="%"+search_name+"%"
-# sql = "SELECT * FROM student WHERE sname LIKE %s"
-# dbcursor.execute(sql, (pattern,))
-# result = dbcursor.fetchall()
-# if result:
-#     for row in result:
-#         print(row)
-# else:
-#     print("No record found")
-# dbcursor.execute('update student set fees=17000 where sid=101')
-# dbcursor.execute("SELECT * FROM student WHERE sid=101")
+            sql="INSERT INTO student VALUES(%s,%s,%s,%s,%s)"
+            val=(sid,sname,course,fees,city)
+            dbcursor.execute(sql,val)
+            mydb.commit()
+            print("Student inserted successfully.")
 
-# res = dbcursor.fetchone()
-# print(res)
-dbcursor.execute("DELETE FROM student WHERE sid= %s",(104,))
-mydb.commit()
-if dbcursor.rowcount > 0:
-    print("Student deleted successfully!")
-else:
-    print("Student not found!")
+        case 2:
+            dbcursor.execute("SELECT * FROM student")
+            result=dbcursor.fetchall()
+
+            if result:
+                for row in result:
+                    print(row)
+                print("Records displayed successfully.")
+            else:
+                print("No records found.")
+
+        case 3:
+            search_name=input("Enter name to search:")
+            pattern="%"+search_name+"%"
+            sql="SELECT * FROM student WHERE sname LIKE %s"
+            dbcursor.execute(sql,(pattern,))
+            result=dbcursor.fetchall()
+
+            if result:
+                print("Matching students:")
+                for row in result:
+                    print(row)
+            else:
+                print("No record found.")
+
+        case 4:
+            sid=int(input("Enter Student ID:"))
+            fees=float(input("Enter New Fees:"))
+            sql="UPDATE student SET fees=%s WHERE sid=%s"
+            dbcursor.execute(sql,(fees,sid))
+            mydb.commit()
+
+            if dbcursor.rowcount>0:
+                print("Student fees updated successfully.")
+            else:
+                print("Student not found.")
+
+        case 5:
+            sid=int(input("Enter Student ID:"))
+            sql="DELETE FROM student WHERE sid=%s"
+            dbcursor.execute(sql,(sid,))
+            mydb.commit()
+
+            if dbcursor.rowcount>0:
+                print("Student deleted successfully!")
+            else:
+                print("Student not found!")
+
+        case 6:
+            print("Thank you for using Student Management System.")
+            break
+
+        case _:
+            print("Invalid choice. Please try again.")
+
+dbcursor.close()
+mydb.close()
